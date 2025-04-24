@@ -1,0 +1,9 @@
+# ide
+.vscode
+.idea
+
+# macos
+.DS_Store
+
+# self
+*.out

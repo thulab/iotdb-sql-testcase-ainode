@@ -1,0 +1,2 @@
+# iotdb-sql-testcase-ainode
+
