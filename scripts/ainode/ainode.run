@@ -20,11 +20,11 @@ show models _Stray;
 
 
 -- create models
-create model dlinear_example using uri "file:///root/data/ainode/models/dlinear";
+create model dlinear_example using uri "file:///data/atmos/zk_test/AINode/models/dlinear";
 sleep 3000;
 show models;
 show models dlinear_example;
-create model timer using uri "file:///root/data/ainode/models/timer";
+create model timer using uri "file:///data/atmos/zk_test/AINode/models/timer";
 sleep 3000;
 show models;
 show models timer;
@@ -36,7 +36,7 @@ show models bbbexists;
 
 
 -- load tsfile for query 
-load "/data/root/ainode/ai-data.tsfile" onSuccess=None;
+load "/data/atmos/zk_test/AINode/data/ai-data.tsfile" onSuccess=None;
 
 
 -- query call interface
