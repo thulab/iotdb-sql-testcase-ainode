@@ -15,7 +15,7 @@ mvn clean package -DskipTests -am -pl distribution -P with-ainode
 
 ### 配置参数
 
-ainode配置文件在：`conf/iotdb-ainode.properties`
+ainode 配置文件在：`conf/iotdb-ainode.properties`
 
 ```properties
 # 集群名称
@@ -46,9 +46,11 @@ python == 3.11 (建议)
 
    根据提示键入“回车”、“长按空格”、“回车”、“yes”、“yes”，即可完成安装，重新进入 shell 即可
 
-2. 测试用 tsfile
+2. 测试用 `tsfile`
 
-3. 模型包，包含 timer 和 dlinear
+3. 模型包 models.zip，包含 `timer` 和 `dlinear`
+
+4. 内置模型`_timerxl`的模型文件 timerxl.zip
 
 ## 测试流程：
 
@@ -67,7 +69,7 @@ python == 3.11 (建议)
 
 ```
 
-4. 将 模型包 放到 `/root/data/ainode/models` 下
+4. 将 模型包 解压后放到 `/root/data/ainode/models` 下
 
 ```shell
 # tree /data/root/ainode/models
@@ -82,4 +84,20 @@ python == 3.11 (建议)
 
 ```
 
-5. 拉取 & 编译 & 启动 sql-test 测试工具（`sqldialect=tree` & `mode=test`）
+5. 将 \_timerxl 模型包解压后放入 `data/ainode/models/weights/` 目录
+
+```shell
+cd <ainode_home>
+mkdir -p data/ainode/models/weights/timerxl
+mv timerxl/model.safetensors data/ainode/models/weights/timerxl
+
+# tree data
+data
+└── ainode
+    └── models
+       └── weights
+           └── timerxl
+               └── model.safetensors
+```
+
+6. 拉取 & 编译 & 启动 sql-test 测试工具（`sqldialect=tree` & `mode=test`）

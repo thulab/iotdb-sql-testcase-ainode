@@ -48,7 +48,7 @@ _STLForecaster     |BUILT_IN_FORECAST    |ACTIVE           |                   |
 总数目：1
 }
 
-Elapsed Time: 0.0.4
+Elapsed Time: 0.0.2
 
 -- [1]14:show models _NaiveForecaster
 STRICT{
@@ -59,7 +59,7 @@ _NaiveForecaster   |BUILT_IN_FORECAST    |ACTIVE           |                   |
 总数目：1
 }
 
-Elapsed Time: 0.0.4
+Elapsed Time: 0.0.1
 
 -- [1]15:show models _ARIMA
 STRICT{
@@ -70,7 +70,7 @@ _ARIMA             |BUILT_IN_FORECAST    |ACTIVE           |                   |
 总数目：1
 }
 
-Elapsed Time: 0.0.2
+Elapsed Time: 0.0.1
 
 -- [1]16:show models _ExponentialSmoothing
 STRICT{
@@ -81,7 +81,7 @@ ng                 |                     |                 |                   |
 总数目：1
 }
 
-Elapsed Time: 0.0.3
+Elapsed Time: 0.0.1
 
 -- [1]17:show models _GaussianHMM
 STRICT{
@@ -92,7 +92,7 @@ _GaussianHMM       |BUILT_IN_ANOMALY_DETE|ACTIVE           |                   |
 总数目：1
 }
 
-Elapsed Time: 0.0.9
+Elapsed Time: 0.0.1
 
 -- [1]18:show models _GMMHMM
 STRICT{
@@ -103,7 +103,7 @@ _GMMHMM            |BUILT_IN_ANOMALY_DETE|ACTIVE           |                   |
 总数目：1
 }
 
-Elapsed Time: 0.0.2
+Elapsed Time: 0.0.0
 
 -- [1]19:show models _Stray
 STRICT{
@@ -161,7 +161,7 @@ _Stray             |BUILT_IN_ANOMALY_DETE|ACTIVE           |                   |
 总数目：9
 }
 
-Elapsed Time: 0.0.18
+Elapsed Time: 0.0.13
 
 -- [1]26:show models dlinear_example
 STRICT{
@@ -233,7 +233,7 @@ _Stray             |BUILT_IN_ANOMALY_DETE|ACTIVE           |                   |
 总数目：10
 }
 
-Elapsed Time: 0.0.13
+Elapsed Time: 0.0.10
 
 -- [1]30:show models timer
 STRICT{
@@ -247,7 +247,7 @@ timer              |USER_DEFINED         |ACTIVE           |inputShape:[1440, 1|
 总数目：1
 }
 
-Elapsed Time: 0.0.7
+Elapsed Time: 0.0.4
 -- [1]32:create model bbbexists using uri "file:///bbbexists"
 STRICT{
 PASS
@@ -306,7 +306,7 @@ _Stray             |BUILT_IN_ANOMALY_DETE|ACTIVE           |                   |
 总数目：11
 }
 
-Elapsed Time: 0.0.6
+Elapsed Time: 0.0.5
 
 -- [1]35:show models bbbexists
 STRICT{
@@ -428,7 +428,7 @@ output0(DOUBLE)      |output1(DOUBLE)      |output2(DOUBLE)      |
 总数目：48
 }
 
-Elapsed Time: 0.0.123
+Elapsed Time: 0.0.114
 
 -- [1]45:call inference(_NaiveForecaster, "select s_0,s_1,s_2 from root.test.g_0.d_0 limit 96", window=head(96),predict_length=48)
 STRICT{
@@ -532,7 +532,7 @@ output0(DOUBLE)      |output1(DOUBLE)      |output2(DOUBLE)      |
 总数目：48
 }
 
-Elapsed Time: 0.0.29
+Elapsed Time: 0.0.27
 
 -- [1]46:call inference(_ARIMA, "select s_0,s_1,s_2 from root.test.g_0.d_0 limit 96", window=head(96),predict_length=48)
 STRICT{
@@ -636,7 +636,7 @@ output0(DOUBLE)      |output1(DOUBLE)      |output2(DOUBLE)      |
 总数目：48
 }
 
-Elapsed Time: 0.0.94
+Elapsed Time: 0.0.83
 
 -- [1]47:call inference(_ARIMA, "select s_0,s_1,s_2 from root.test.g_0.d_0 limit 96", generateTime=True,window=head(96),predict_length=48)
 STRICT{
@@ -740,7 +740,7 @@ Time(TIMESTAMP)      |output0(DOUBLE)      |output1(DOUBLE)      |output2(DOUBLE
 总数目：48
 }
 
-Elapsed Time: 0.0.84
+Elapsed Time: 0.0.78
 
 -- [1]48:call inference(_ExponentialSmoothing, "select s_0,s_1,s_2 from root.test.g_0.d_0 limit 96", window=head(96),predict_length=48)
 STRICT{
@@ -844,9 +844,113 @@ output0(DOUBLE)      |output1(DOUBLE)      |output2(DOUBLE)      |
 总数目：48
 }
 
-Elapsed Time: 0.0.26
+Elapsed Time: 0.0.23
 
--- [1]50:call inference(_GaussianHMM, "select s_0 from root.test.g_0.d_0 limit 10")
+-- [1]49:call inference(_timerxl, "select s_3 from root.test.g_0.d_0 limit 96", window=head(96),predict_length=48)
+STRICT{
+output0(DOUBLE)      |
+---------------------
+747.918701171875     |
+---------------------
+784.4385986328125    |
+---------------------
+819.6060180664062    |
+---------------------
+798.1981201171875    |
+---------------------
+803.1295166015625    |
+---------------------
+791.6939697265625    |
+---------------------
+812.5015869140625    |
+---------------------
+798.5052490234375    |
+---------------------
+791.88720703125      |
+---------------------
+763.4049072265625    |
+---------------------
+767.0048828125       |
+---------------------
+755.6231079101562    |
+---------------------
+736.6340942382812    |
+---------------------
+743.3856811523438    |
+---------------------
+766.26513671875      |
+---------------------
+724.0274658203125    |
+---------------------
+707.6365966796875    |
+---------------------
+730.63623046875      |
+---------------------
+752.48486328125      |
+---------------------
+735.5154418945312    |
+---------------------
+744.1119995117188    |
+---------------------
+762.068115234375     |
+---------------------
+778.8995971679688    |
+---------------------
+755.2174072265625    |
+---------------------
+819.5790405273438    |
+---------------------
+813.1686401367188    |
+---------------------
+807.6045532226562    |
+---------------------
+795.4132690429688    |
+---------------------
+792.006591796875     |
+---------------------
+782.885498046875     |
+---------------------
+800.6265258789062    |
+---------------------
+785.90869140625      |
+---------------------
+778.9816284179688    |
+---------------------
+753.5301513671875    |
+---------------------
+766.6156005859375    |
+---------------------
+757.2499389648438    |
+---------------------
+749.2251586914062    |
+---------------------
+766.7322998046875    |
+---------------------
+783.9932250976562    |
+---------------------
+748.561767578125     |
+---------------------
+740.1680297851562    |
+---------------------
+744.6151123046875    |
+---------------------
+767.4779052734375    |
+---------------------
+760.7679443359375    |
+---------------------
+770.2109375          |
+---------------------
+776.1810302734375    |
+---------------------
+805.8265991210938    |
+---------------------
+792.0771484375       |
+总数目：48
+}
+
+Elapsed Time: 0.0.650
+
+-- [1]51:call inference(_GaussianHMM, "select s_0 from root.test.g_0.d_0 limit 10")
 STRICT{
 output0(INT32)      |
 --------------------
@@ -872,9 +976,9 @@ output0(INT32)      |
 总数目：10
 }
 
-Elapsed Time: 0.0.13
+Elapsed Time: 0.0.12
 
--- [1]51:call inference(_GMMHMM, "select s_0 from root.test.g_0.d_0 limit 10")
+-- [1]52:call inference(_GMMHMM, "select s_0 from root.test.g_0.d_0 limit 10")
 STRICT{
 output0(INT32)      |
 --------------------
@@ -900,9 +1004,9 @@ output0(INT32)      |
 总数目：10
 }
 
-Elapsed Time: 0.0.17
+Elapsed Time: 0.0.22
 
--- [1]52:call inference(_Stray, "select s_22 from root.test.g_0.d_0 limit 10", k=2)
+-- [1]53:call inference(_Stray, "select s_22 from root.test.g_0.d_0 limit 10", k=2)
 STRICT{
 output0(INT32)      |
 --------------------
@@ -928,9 +1032,9 @@ output0(INT32)      |
 总数目：10
 }
 
-Elapsed Time: 0.0.15
+Elapsed Time: 0.0.14
 
--- [1]54:call inference(dlinear_example,"select s_11,s_12,s_13,s_14,s_15,s_16,s_17 from root.test.g_0.d_0 limit 96")
+-- [1]55:call inference(dlinear_example,"select s_11,s_12,s_13,s_14,s_15,s_16,s_17 from root.test.g_0.d_0 limit 96")
 STRICT{
 output0(FLOAT)      |output1(FLOAT)      |output2(FLOAT)      |output3(FLOAT)      |output4(FLOAT)      |output5(FLOAT)      |output6(FLOAT)      |
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -1032,33 +1136,33 @@ output0(FLOAT)      |output1(FLOAT)      |output2(FLOAT)      |output3(FLOAT)   
 总数目：48
 }
 
-Elapsed Time: 0.0.32
--- [1]55:call inference(timer,"select s_11 from root.test.g_0.d_0 limit 1440")
+Elapsed Time: 0.0.27
+-- [1]56:call inference(timer,"select s_11 from root.test.g_0.d_0 limit 1440")
 STRICT{
 PASS
 }
--- [1]60:drop model bbbexists
+-- [1]61:drop model bbbexists
 STRICT{
 PASS
 }
 
--- [1]61:show models bbbexists
+-- [1]62:show models bbbexists
 STRICT{
 ModelId(TEXT)      |ModelType(TEXT)      |State(TEXT)      |Configs(TEXT)      |Notes(TEXT)      |
 总数目：0
 }
 
-Elapsed Time: 0.0.2
--- [1]62:drop model bbbexists
+Elapsed Time: 0.0.1
+-- [1]63:drop model bbbexists
 STRICT{
 SQLSTATE : 1502: Model name bbbexists doesn't exists
 }
--- [1]64:drop model dlinear_example
+-- [1]65:drop model dlinear_example
 STRICT{
 PASS
 }
 
--- [1]65:show models
+-- [1]66:show models
 STRICT{
 ModelId(TEXT)      |ModelType(TEXT)      |State(TEXT)      |Configs(TEXT)      |Notes(TEXT)      |
 ---------------------------------------------------------------------------------------------
@@ -1095,12 +1199,12 @@ _Stray             |BUILT_IN_ANOMALY_DETE|ACTIVE           |                   |
 }
 
 Elapsed Time: 0.0.2
--- [1]66:drop model timer
+-- [1]67:drop model timer
 STRICT{
 PASS
 }
 
--- [1]67:show models
+-- [1]68:show models
 STRICT{
 ModelId(TEXT)      |ModelType(TEXT)      |State(TEXT)      |Configs(TEXT)      |Notes(TEXT)      |
 ---------------------------------------------------------------------------------------------
@@ -1131,7 +1235,7 @@ _Stray             |BUILT_IN_ANOMALY_DETE|ACTIVE           |                   |
 }
 
 Elapsed Time: 0.0.1
--- [1]68:drop model _GMMHMM
+-- [1]69:drop model _GMMHMM
 STRICT{
 SQLSTATE : 1502: Built-in model _GMMHMM can't be removed
 }
