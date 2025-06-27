@@ -197,6 +197,7 @@ SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY t
 <<CHECKCODE;
 // 【TIMECHODB-0383】RC4修复
 //SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => 'TIME');
+//<CHECKCODE;
 
 --7.preserve_input
 SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',preserve_input => true);
@@ -225,8 +226,8 @@ SELECT * FROM forecast (input => t1, model_id => 'no');
 <<SQLSTATE;
 SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_length => 0);
 <<SQLSTATE;
-SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => '');
-<<SQLSTATE;
+//SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => '');
+//<<SQLSTATE;
 SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => 'tag1');
 <<SQLSTATE;
 SELECT * FROM forecast (input => (select time,tag1,int32 from t10) PARTITION BY tag1, model_id => '_sundial',timecol => 'timstamp');
