@@ -1,0 +1,238 @@
+--0.连接数据库清理环境
+connect root/root;
+drop database ainode_table_value_function_test;
+<<NULL;
+
+--1.准备数据
+create database ainode_table_value_function_test;
+use ainode_table_value_function_test;
+create table qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM (stock_id STRING TAG, price DOUBLE FIELD);
+insert into qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM(time,stock_id,price) values(5,'APPL',100.0);
+insert into qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM(time,stock_id,price) values(6,'TESL',200.0);
+insert into qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM(time,stock_id,price) values(7,'APPL',103.0);
+insert into qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM(time,stock_id,price) values(7,'TESL',202.0);
+insert into qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM(time,stock_id,price) values(9,'APPL',102.0);
+insert into qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM(time,stock_id,price) values(8,'TESL',195.0);
+create table "1234567890" (stock_id STRING TAG, price DOUBLE FIELD);
+insert into "1234567890"(time,stock_id,price) values(5,'APPL',100.0);
+insert into "1234567890"(time,stock_id,price) values(6,'TESL',200.0);
+insert into "1234567890"(time,stock_id,price) values(7,'APPL',103.0);
+insert into "1234567890"(time,stock_id,price) values(7,'TESL',202.0);
+insert into "1234567890"(time,stock_id,price) values(9,'APPL',102.0);
+insert into "1234567890"(time,stock_id,price) values(8,'TESL',195.0);
+create table "!@#" (stock_id STRING TAG, price DOUBLE FIELD);
+insert into "!@#"(time,stock_id,price) values(5,'APPL',100.0);
+insert into "!@#"(time,stock_id,price) values(6,'TESL',200.0);
+insert into "!@#"(time,stock_id,price) values(7,'APPL',103.0);
+insert into "!@#"(time,stock_id,price) values(7,'TESL',202.0);
+insert into "!@#"(time,stock_id,price) values(9,'APPL',102.0);
+insert into "!@#"(time,stock_id,price) values(8,'TESL',195.0);
+create table "没问题" (stock_id STRING TAG, price DOUBLE FIELD);
+insert into "没问题"(time,stock_id,price) values(5,'APPL',100.0);
+insert into "没问题"(time,stock_id,price) values(6,'TESL',200.0);
+insert into "没问题"(time,stock_id,price) values(7,'APPL',103.0);
+insert into "没问题"(time,stock_id,price) values(7,'TESL',202.0);
+insert into "没问题"(time,stock_id,price) values(9,'APPL',102.0);
+insert into "没问题"(time,stock_id,price) values(8,'TESL',195.0);
+create table " 没问题123!@#abc " (stock_id STRING TAG, price DOUBLE FIELD);
+insert into " 没问题123!@#abc "(time,stock_id,price) values(5,'APPL',100.0);
+insert into " 没问题123!@#abc "(time,stock_id,price) values(6,'TESL',200.0);
+insert into " 没问题123!@#abc "(time,stock_id,price) values(7,'APPL',103.0);
+insert into " 没问题123!@#abc "(time,stock_id,price) values(7,'TESL',202.0);
+insert into " 没问题123!@#abc "(time,stock_id,price) values(9,'APPL',102.0);
+insert into " 没问题123!@#abc "(time,stock_id,price) values(8,'TESL',195.0);
+create table "  " (stock_id STRING TAG, price DOUBLE FIELD);
+insert into "  "(time,stock_id,price) values(5,'APPL',100.0);
+insert into "  "(time,stock_id,price) values(6,'TESL',200.0);
+insert into "  "(time,stock_id,price) values(7,'APPL',103.0);
+insert into "  "(time,stock_id,price) values(7,'TESL',202.0);
+insert into "  "(time,stock_id,price) values(9,'APPL',102.0);
+insert into "  "(time,stock_id,price) values(8,'TESL',195.0);
+//情况1：正数
+create table t1(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t1(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(1,'tag1','tag2','attr1','attr2',1,10,100.0,1000.0);
+insert into t1(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(2,'tag1','tag2','attr1','attr2',2,20,200.0,2000.0);
+insert into t1(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(3,'tag1','tag2','attr1','attr2',3,30,300.0,3000.0);
+insert into t1(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(4,'tag1','tag2','attr1','attr2',4,40,400.0,4000.0);
+insert into t1(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(5,'tag1','tag2','attr1','attr2',5,50,500.0,5000.0);
+//情况2：负数
+create table t2(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t2(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(1,'tag1','tag2','attr1','attr2',-1,-10,-100.0,-1000.0);
+insert into t2(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(2,'tag1','tag2','attr1','attr2',-2,-20,-200.0,-2000.0);
+insert into t2(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(3,'tag1','tag2','attr1','attr2',-3,-30,-300.0,-3000.0);
+insert into t2(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(4,'tag1','tag2','attr1','attr2',-4,-40,-400.0,-4000.0);
+insert into t2(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(5,'tag1','tag2','attr1','attr2',-5,-50,-500.0,-5000.0);
+//情况3：Flied列含空值
+create table t3(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t3(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(1,'tag1','tag2','attr1','attr2',1,10,100.0,1000.0);
+insert into t3(time,tag1,tag2,attr1,attr2,int32,float) values(2,'tag1','tag2','attr1','attr2',2,200.0);
+insert into t3(time,tag1,tag2,attr1,attr2,int64,double) values(3,'tag1','tag2','attr1','attr2',30,3000.0);
+insert into t3(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(4,'tag1','tag2','attr1','attr2',4,40,400.0,4000.0);
+insert into t3(time,tag1,tag2,attr1,attr2,int32) values(5,'tag1','tag2','attr1','attr2',1);
+//情况4：TAG+ATTRITUBE列含空值
+create table t4(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t4(time,tag2,attr2,int32,int64,float,double) values(1,'tag2','attr2',1,10,100.0,1000.0);
+insert into t4(time,tag2,attr2,int32,int64,float,double) values(2,'tag2','attr2',2,20,200.0,2000.0);
+insert into t4(time,tag2,attr2,int32,int64,float,double) values(3,'tag2','attr2',3,30,300.0,3000.0);
+insert into t4(time,tag2,attr2,int32,int64,float,double) values(4,'tag2','attr2',4,40,400.0,4000.0);
+insert into t4(time,tag2,attr2,int32,int64,float,double) values(5,'tag2','attr2',5,50,500.0,5000.0);
+//情况5：TAG+ATTRITUBE+FIELD列含空值
+create table t5(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t5(time,tag1,attr1,int32,int64,float,double) values(1,'tag1','attr1',1,10,100.0,1000.0);
+insert into t5(time,tag1,attr1,int32,float) values(2,'tag1','attr1',2,200.0);
+insert into t5(time,tag1,attr1,int64,double) values(3,'tag2','attr1',30,3000.0);
+insert into t5(time,tag1,attr1,int32,int64,float,double) values(4,'tag1','attr1',4,40,400.0,4000.0);
+insert into t5(time,tag1,attr1,int32) values(5,'tag1','attr1',1);
+//情况6：只有一个数据
+create table t6(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t6(time,tag1,tag2,attr1,attr2,int32,int64,float,double) values(1,'tag1','tag2','attr1','attr2',1,10,100.0,1000.0);
+//情况7：Flied列全空值
+create table t7(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t7(time,tag1,tag2,attr1,attr2,int32) values(1,'tag1','tag2','attr1','attr2',1);
+insert into t7(time,tag1,tag2,attr1,attr2,int32) values(2,'tag1','tag2','attr1','attr2',2);
+insert into t7(time,tag1,tag2,attr1,attr2,int32) values(3,'tag1','tag2','attr1','attr2',3);
+insert into t7(time,tag1,tag2,attr1,attr2,int32) values(4,'tag1','tag2','attr1','attr2',4);
+insert into t7(time,tag1,tag2,attr1,attr2,int32) values(5,'tag1','tag2','attr1','attr2',5);
+//情况8：TAG+ATTRITUBE列全空值
+create table t8(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+insert into t8(time,int32,int64,float,double) values(1,1,10,100.0,1000.0);
+insert into t8(time,int32,int64,float,double) values(2,2,20,200.0,2000.0);
+insert into t8(time,int32,int64,float,double) values(3,3,30,300.0,3000.0);
+insert into t8(time,int32,int64,float,double) values(4,4,40,400.0,4000.0);
+insert into t8(time,int32,int64,float,double) values(5,5,50,500.0,5000.0);
+//情况9：没有数据
+create table t9(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE);
+//情况10：包含不支持和全为的数据类型
+create table t10(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE,timstamp TIMESTAMP);
+insert into t10(time,tag1,tag2,attr1,attr2,int32,int64,float,double,timstamp) values(1,'tag1','tag2','attr1','attr2',1,10,100.0,1000.0,1);
+insert into t10(time,tag1,tag2,attr1,attr2,int32,int64,float,double,timstamp) values(2,'tag1','tag2','attr1','attr2',2,20,200.0,2000.0,2);
+insert into t10(time,tag1,tag2,attr1,attr2,int32,int64,float,double,timstamp) values(3,'tag1','tag2','attr1','attr2',3,30,300.0,3000.0,3);
+insert into t10(time,tag1,tag2,attr1,attr2,int32,int64,float,double,timstamp) values(4,'tag1','tag2','attr1','attr2',4,40,400.0,4000.0,4);
+insert into t10(time,tag1,tag2,attr1,attr2,int32,int64,float,double,timstamp) values(5,'tag1','tag2','attr1','attr2',5,50,500.0,5000.0,5);
+create table t11(tag1 TAG,tag2 TAG,attr1 ATTRIBUTE,attr2 ATTRIBUTE,int32 INT32,int64 INT64,float FLOAT,double DOUBLE,text TEXT,string STRING,blob BLOB,date DATE,timestamp TIMESTAMP,boolean BOOLEAN);
+insert into t11(time,tag1,tag2,attr1,attr2,int32,int64,float,double,text,string,blob,date,timestamp,boolean) values(1,'tag1','tag2','attr1','attr2',1,10,100.0,1000.0,'1','1',X'e4b8ade69687','1970-01-01',1,true);
+insert into t11(time,tag1,tag2,attr1,attr2,int32,int64,float,double,text,string,blob,date,timestamp,boolean) values(2,'tag1','tag2','attr1','attr2',2,20,200.0,2000.0,'2','2',X'e4b8ade69687','1970-01-01',2,true);
+insert into t11(time,tag1,tag2,attr1,attr2,int32,int64,float,double,text,string,blob,date,timestamp,boolean) values(3,'tag1','tag2','attr1','attr2',3,30,300.0,3000.0,'3','3',X'e4b8ade69687','1970-01-01',3,true);
+insert into t11(time,tag1,tag2,attr1,attr2,int32,int64,float,double,text,string,blob,date,timestamp,boolean) values(4,'tag1','tag2','attr1','attr2',4,40,400.0,4000.0,'4','4',X'e4b8ade69687','1970-01-01',4,true);
+insert into t11(time,tag1,tag2,attr1,attr2,int32,int64,float,double,text,string,blob,date,timestamp,boolean) values(5,'tag1','tag2','attr1','attr2',5,50,500.0,5000.0,'5','5',X'e4b8ade69687','1970-01-01',5,true);
+
+--2.input和model_id
+//1、各种表名
+SELECT * FROM forecast (input => (select time,stock_id,price from qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM) PARTITION BY stock_id, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,stock_id,price from "1234567890") PARTITION BY stock_id, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,stock_id,price from "!@#") PARTITION BY stock_id, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,stock_id,price from "没问题") PARTITION BY stock_id, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,stock_id,price from " 没问题123!@#abc ") PARTITION BY stock_id, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,stock_id,price from "  ") PARTITION BY stock_id, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int64 from t2) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,float from t3) PARTITION BY tag1, model_id => '_sundial', output_length => 1);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,double from t4) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t5) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t6) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t7) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t8) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t9) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t10) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+//2、查询结果集
+SELECT * FROM forecast (input => (select time,double from t1), model_id => '_sundial', PREDICATED_COLUMNS => 'double');
+<<CHECKCODE;
+//3、填写方式
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial');
+<<CHECKCODE;
+SELECT * FROM forecast ((select time, tag1,int32 from t1) PARTITION BY tag1, '_sundial');
+<<CHECKCODE;
+//4、多列（暂且开发不确定是否需要支持）
+//SELECT * FROM forecast (input => (select time, tag1,int32,int64,float,double from t1) PARTITION BY tag1, model_id => '_sundial', output_length => 1);
+//SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial', output_length => 1);
+
+--3.output_length
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_length => 1);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_length => 1000);
+<<CHECKCODE;
+SELECT * FROM forecast ((select time, tag1,int32 from t1) PARTITION BY tag1, '_sundial', 1);
+<<CHECKCODE;
+
+--4.output_start_time
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_start_time => 0);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_start_time => -100);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_start_time => 100);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_start_time => 9223372036854775807);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_start_time => -9223372036854775808);
+<<CHECKCODE;
+SELECT * FROM forecast ((select time, tag1,int32 from t1) PARTITION BY tag1, '_sundial', 1, 6);
+<<CHECKCODE;
+
+--5.output_interval
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_interval => 0);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_interval => 10);
+<<CHECKCODE;
+SELECT * FROM forecast ((select time, tag1,int32 from t1) PARTITION BY tag1, '_sundial', 1, 6, 10);
+<<CHECKCODE;
+
+--6.timecol
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => 'time');
+<<CHECKCODE;
+// 【TIMECHODB-0383】RC4修复
+//SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => 'TIME');
+
+--7.preserve_input
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',preserve_input => true);
+<<CHECKCODE;
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',preserve_input => false);
+<<CHECKCODE;
+
+--8.model_options（未提供可选项测试）
+SELECT * FROM forecast (input => (select time,tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',model_options => '');
+<<CHECKCODE;
+
+--9.全部参数（大小写）
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial', output_length => 10, output_start_time => 6, output_interval => 10, timecol => 'time', preserve_input => true, model_options => '');
+<<CHECKCODE;
+SELECT * FROM forecast (INPUT => (select time, tag1,int32 from t1) PARTITION BY tag1, MODEL_ID => '_sundial', OUTPUT_LENGTH => 10, OUTPUT_START_TIME => 6, OUTPUT_INTERVAL => 10, TIMECOL => 'time', preserve_input => true, MODEL_OPTIONS => '');
+<<CHECKCODE;
+
+--10.异常处理
+SELECT * FROM forecast (model_id => '_sundial');
+<<SQLSTATE;
+SELECT * FROM forecast (input => t1);
+<<SQLSTATE;
+SELECT * FROM forecast (input => t1, model_id => '');
+<<SQLSTATE;
+SELECT * FROM forecast (input => t1, model_id => 'no');
+<<SQLSTATE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',output_length => 0);
+<<SQLSTATE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => '');
+<<SQLSTATE;
+SELECT * FROM forecast (input => (select time, tag1,int32 from t1) PARTITION BY tag1, model_id => '_sundial',timecol => 'tag1');
+<<SQLSTATE;
+SELECT * FROM forecast (input => (select time,tag1,int32 from t10) PARTITION BY tag1, model_id => '_sundial',timecol => 'timstamp');
+<<SQLSTATE;
+SELECT * FROM forecast (input => (select time,tag1 from t1) PARTITION BY tag1, model_id => '_sundial');
+<<SQLSTATE;
+
+drop database ainode_table_value_function_test;
+
