@@ -62,7 +62,25 @@ drop model dlinear_example;
 show models;
 
 -- drop  BUILT-IN models;
-drop model gaussian_hmm;
+drop models arima;
+<<SQLSTATE;
+drop models holtwinters;
+<<SQLSTATE;
+drop models exponential_smoothing;
+<<SQLSTATE;
+drop models naive_forecaster;
+<<SQLSTATE;
+drop models stl_forecaster;
+<<SQLSTATE;
+drop models gaussian_hmm;
+<<SQLSTATE;
+drop models gmm_hmm;
+<<SQLSTATE;
+drop models stray;
+<<SQLSTATE;
+drop models timer_xl;
+<<SQLSTATE;
+drop models sundial;
 <<SQLSTATE;
 
 -- finally
